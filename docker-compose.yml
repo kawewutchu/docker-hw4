@@ -11,7 +11,7 @@ services:
     networks:
       - frontend
     depends_on:
-      - wordpress1
+      - wordpress
 
   wordpress:
     image: wordpress
@@ -50,8 +50,7 @@ services:
       - backend
     depends_on:
       - mysql
-      - wordpress1
-      - wordpress2
+      - wordpress
 
 volumes:
   db_data:
