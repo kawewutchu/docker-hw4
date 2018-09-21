@@ -10,26 +10,15 @@ services:
     networks:
       - frontend
     depends_on:
-      - wordpress1
-      - wordpress2
+      - wordpress
 
-  wordpress1:
+  wordpress:
     image: wordpress
     networks:
       - frontend
       - backend
     ports:
-      - "80"
-    environment:
-      WORDPRESS_DB_PASSWORD: wordpress
-    depends_on:
-      - mysql
-
-  wordpress2:
-    image: wordpress
-    networks:
-      - frontend
-      - backend
+      - "8081:80"
     environment:
       WORDPRESS_DB_PASSWORD: wordpress
     depends_on:
