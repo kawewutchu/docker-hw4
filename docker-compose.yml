@@ -18,7 +18,7 @@ services:
     image: wordpress
     restart: always
     volumes:
-      - ./wp-content:/var/www/html/wp-content 
+      - .:/var/www/html/ 
     networks:
       - frontend
       - backend
@@ -33,7 +33,7 @@ services:
     image: wordpress
     restart: always
     volumes:
-      - ./wp-content:/var/www/html/wp-content 
+      - .:/var/www/html/
     networks:
       - frontend
       - backend
@@ -68,6 +68,8 @@ services:
       - backend
     depends_on:
       - mysql
+      - wordpress1
+      - wordpress2
 
 volumes:
   db_data:
