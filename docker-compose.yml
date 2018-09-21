@@ -12,13 +12,10 @@ services:
       - frontend
     depends_on:
       - wordpress1
-      - wordpress2
 
-  wordpress1:
+  wordpress:
     image: wordpress
     restart: always
-    volumes:
-      - .:/var/www/html/ 
     networks:
       - frontend
       - backend
@@ -29,21 +26,6 @@ services:
     depends_on:
       - mysql
   
-  wordpress2:
-    image: wordpress
-    restart: always
-    volumes:
-      - .:/var/www/html/
-    networks:
-      - frontend
-      - backend
-    ports:
-      - "80"
-    environment:
-      WORDPRESS_DB_PASSWORD: wordpress
-    depends_on:
-      - mysql
-      
   mysql:
     image: mysql:5.7
     restart: always
