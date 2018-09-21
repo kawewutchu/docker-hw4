@@ -52,7 +52,9 @@ services:
       placement:
         constraints: [node.role == manager]
     networks:
-      - frontend
+      - backend
+    depends_on:
+      - mysql
 
 networks:
   frontend:
