@@ -13,7 +13,9 @@ services:
       - wordpress
 
   wordpress:
-    image: wordpress
+    image: wordpress:latest
+    volumes:
+     - wp-content/:/var/www/html/wp-content
     networks:
       - frontend
       - backend
@@ -49,7 +51,7 @@ services:
 
 volumes:
     db_data:
-    wordpress:
+    wp-content:
 
 networks:
   frontend:
