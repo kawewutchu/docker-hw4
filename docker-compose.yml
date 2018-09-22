@@ -9,7 +9,7 @@ services:
       placement:
         constraints: [node.role == manager]
     ports:
-      - 8088:80
+      - 8080:80
     environment:
       WORDPRESS_DB_PASSWORD: wordpress
     networks:
