@@ -14,6 +14,11 @@ services:
 
   wordpress:
     image: wordpress
+    links:
+     - mysql
+    working_dir: /var/www/html
+    volumes:
+     - wordpress/wp-content/:/var/www/html/wp-content
     networks:
       - frontend
       - backend
@@ -49,7 +54,8 @@ services:
 
 volumes:
     db_data:
-      
+    wordpress:
+
 networks:
   frontend:
   backend:
