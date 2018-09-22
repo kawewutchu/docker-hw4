@@ -49,16 +49,15 @@ services:
     networks:
       - backend
     volumes:
-      - $PWD/mysql_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
 volumes:
     db_data:
-    wp-content:
 
 networks:
   frontend:
