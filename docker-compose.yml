@@ -21,7 +21,7 @@ services:
     restart: always
     deploy:
       placement:
-        constraints: [node.role == worker]
+        constraints: [node.role == manager]
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
     networks:
