@@ -22,7 +22,10 @@ services:
     ports:
       - "8081:80"
     environment:
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_HOST: wordpress_db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: db_parola
     depends_on:
       - mysql
       
@@ -33,7 +36,10 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: db_root_parola
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: db_parola
 
   visualizer:
     image: dockersamples/visualizer:stable
@@ -56,3 +62,4 @@ volumes:
 networks:
   frontend:
   backend:
+    driver: overlay
