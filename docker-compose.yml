@@ -15,7 +15,7 @@ services:
   wordpress:
     image: wordpress:latest
     volumes:
-     - wp-content/:/var/www/html/wp-content
+     - ./:/var/www/html
     networks:
       - frontend
       - backend
