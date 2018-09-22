@@ -1,6 +1,21 @@
 version: '3.3'
 
 services:
+
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - backend
+    depends_on:
+      - mysql
+
   nginx:
     image: nginx
     volumes:
@@ -25,35 +40,21 @@ services:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: db_parola
+      WORDPRESS_DB_PASSWORD: wordpress
     depends_on:
       - mysql
-      
+    
   mysql:
     image: mysql:5.7
     networks:
       - backend
     volumes:
-      - db_data:/var/lib/mysql
+      - $PWD/mysql_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: db_root_parola
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
-      MYSQL_PASSWORD: db_parola
-
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-    networks:
-      - backend
-    depends_on:
-      - mysql
+      MYSQL_PASSWORD: wordpress
 
 volumes:
     db_data:
