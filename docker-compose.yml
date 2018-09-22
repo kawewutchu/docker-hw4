@@ -24,6 +24,8 @@ services:
       - "8083:80"
     networks:
       - frontend
+    links:
+      - wordpress
     depends_on:
       - wordpress
 
@@ -40,8 +42,6 @@ services:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-    links:
-      - mysql
     depends_on:
       - mysql
     
@@ -49,6 +49,8 @@ services:
     image: mysql:5.7
     networks:
       - backend
+    links:
+      - mysql
     volumes:
       - db_data:/var/lib/mysql
     environment:
