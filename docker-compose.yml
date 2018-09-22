@@ -21,11 +21,6 @@ services:
       - "8081:80"
     environment:
       WORDPRESS_DB_PASSWORD: wordpress
-    working_dir: /var/www/html
-    volumes:
-     - wordpress/wp-content/:/var/www/html/wp-content
-    links:
-     - mysql
     depends_on:
       - mysql
       
@@ -33,6 +28,8 @@ services:
     image: mysql:5.7
     networks:
       - backend
+    volumes:
+      - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
 
@@ -50,6 +47,9 @@ services:
     depends_on:
       - mysql
 
+volumes:
+    db_data:
+      
 networks:
   frontend:
   backend:
