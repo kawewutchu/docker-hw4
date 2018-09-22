@@ -31,9 +31,9 @@ services:
  
   wordpress:
     depends_on:
-      - mysql:db
+      - mysql
     links:
-      - mysql:
+      - mysql:db
     image: wordpress:latest
     volumes:
      - ./:/var/www/html
