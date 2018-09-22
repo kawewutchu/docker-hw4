@@ -50,7 +50,7 @@ services:
     networks:
       - backend
     links:
-      - mysql
+      - wordpress
     volumes:
       - db_data:/var/lib/mysql
     environment:
