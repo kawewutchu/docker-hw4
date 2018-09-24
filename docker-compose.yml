@@ -18,13 +18,13 @@ services:
     image: mysql:5.7
     networks:
       - backend
-    ports:
-      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: admin
     deploy:
+      mode: replicated
+      replicas: 1
       endpoint_mode: dnsrr
       placement:
         constraints: [node.role == manager]
