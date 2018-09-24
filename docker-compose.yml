@@ -25,6 +25,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin
     deploy:
+      endpoint_mode: dnsrr
       placement:
         constraints: [node.role == manager]
  
@@ -44,6 +45,7 @@ services:
     environment:
       WORDPRESS_DB_PASSWORD: wordpress
     deploy:
+      endpoint_mode: dnsrr
       placement:
         constraints: [node.role == manager]
      
