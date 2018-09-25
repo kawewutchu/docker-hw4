@@ -26,7 +26,7 @@ services:
       replicas: 3
       
  
-  wordpress:
+  wordpress1:
     image: wordpress
     restart: always
     volumes:
@@ -40,7 +40,23 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
     deploy:
       mode: replicated
-      replicas: 4
+      replicas: 1
+  
+  wordpress2:
+    image: wordpress
+    restart: always
+    volumes:
+     - ./:/var/www/html
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8081:80"
+    environment:
+      WORDPRESS_DB_PASSWORD: wordpress
+    deploy:
+      mode: replicated
+      replicas: 1
       
      
   nginx:
