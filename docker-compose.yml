@@ -20,6 +20,9 @@ services:
       - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
     deploy:
       endpoint_mode: dnsrr
       mode: replicated
@@ -37,8 +40,11 @@ services:
     ports:
       - "8081:80"
     environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
     deploy:
+      endpoint_mode: dnsrr
       mode: replicated
       replicas: 1
       
