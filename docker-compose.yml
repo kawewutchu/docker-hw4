@@ -1,4 +1,4 @@
-version: '3.3'
+version: '2'
 
 services:
   visualizer:
@@ -15,9 +15,7 @@ services:
     image: mysql:5.7
     restart: always
     networks:
-      backend:
-        aliases:
-          - mysql
+      - backend
     volumes:
       - db_data:/var/lib/mysql
     environment:
