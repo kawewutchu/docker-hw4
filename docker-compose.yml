@@ -51,7 +51,7 @@ services:
       - frontend
       - backend
     ports:
-      - "8081:80"
+      - "8082:80"
     environment:
       WORDPRESS_DB_PASSWORD: wordpress
     deploy:
