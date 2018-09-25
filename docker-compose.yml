@@ -23,7 +23,7 @@ services:
     deploy:
       endpoint_mode: dnsrr
       mode: replicated
-      replicas: 3
+      replicas: 1
       
  
   wordpress1:
