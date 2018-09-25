@@ -12,17 +12,16 @@ services:
       - backend
 
   mysql:
-    image: mariadb:10.1
+    image: mysql:5.7
     restart: always
     networks:
       - backend
     volumes:
       - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD_FILE: wordpress
-      MYSQL_PASSWORD_FILE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: admin
     deploy:
       endpoint_mode: dnsrr
       mode: replicated
@@ -30,7 +29,7 @@ services:
       
  
   wordpress:
-    image: wordpress:4.7
+    image: wordpress
     restart: always
     volumes:
      - ./:/var/www/html
@@ -40,12 +39,8 @@ services:
     ports:
       - "8081:80"
     environment:
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD_FILE: wordpress
-      WORDPRESS_DB_HOST: mysql
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
     deploy:
-      endpoint_mode: dnsrr
       mode: replicated
       replicas: 1
       
