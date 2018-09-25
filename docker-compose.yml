@@ -20,6 +20,8 @@ services:
     restart: always
     networks:
       - backend
+        aliases:
+          - mysql
     volumes:
       - db_data:/var/lib/mysql
     environment:
