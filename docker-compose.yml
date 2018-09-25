@@ -44,7 +44,7 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 1
       
      
   nginx:
