@@ -38,7 +38,7 @@ services:
       - mysql
     links:
       - mysql:db
-    dockeimage: wordpress
+    image: wordpress
     restart: always
     volumes:
      - ./:/var/www/html
@@ -73,7 +73,7 @@ services:
       replicas: 3
       
 volumes:
-    db_data:
+  db_data:
 
 networks:
   frontend:
