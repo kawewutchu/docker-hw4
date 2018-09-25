@@ -19,7 +19,7 @@ services:
     image: mysql:5.7
     restart: always
     networks:
-      - backend
+      backend:
         aliases:
           - mysql
     volumes:
