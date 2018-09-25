@@ -49,7 +49,6 @@ services:
     environment:
       WORDPRESS_DB_PASSWORD: wordpress
     deploy:
-      endpoint_mode: dnsrr
       mode: replicated
       replicas: 4
       placement:
