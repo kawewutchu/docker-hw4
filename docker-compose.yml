@@ -24,25 +24,8 @@ services:
       endpoint_mode: dnsrr
       mode: replicated
       replicas: 1
-      
- 
-  wordpress1:
-    image: wordpress
-    restart: always
-    volumes:
-     - ./:/var/www/html
-    networks:
-      - frontend
-      - backend
-    ports:
-      - "8081:80"
-    environment:
-      WORDPRESS_DB_PASSWORD: wordpress
-    deploy:
-      mode: replicated
-      replicas: 1
-  
-  wordpress2:
+    
+  wordpress:
     image: wordpress
     restart: always
     volumes:
@@ -56,7 +39,7 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 4
       
      
   nginx:
